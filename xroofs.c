@@ -5,7 +5,7 @@
 # compile: cl xroofs.c /D "NODEBUG" /O2
 */
 
-#define VERSION "0.1.3"
+#define VERSION "0.1.4"
 
 #ifdef _WIN32
  #include <windows.h>
@@ -62,62 +62,62 @@ char *FACADES[100] = {
    NULL
 };
 
-char *LIBRARY[100] = {
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-01.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-02.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-03.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-04.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-05.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-06.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-07.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-08.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial-01.fac     hard/commerce-03.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/commercial-02.fac     hard/commerce-04.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-01.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-02.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-03.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-04.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-05.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com.fac      hard/bld-high-com-01.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com.fac      hard/bld-high-com-02.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res-01.fac   hard/bld-high-res-02.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res-02.fac   hard/bld-high-res-05.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com-01.fac   hard/bld-high-com-01.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com-02.fac   hard/bld-high-com-03.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-01.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-02.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-03.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-04.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-05.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-06.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-07.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-08.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial-01.fac     hard/industrial-01.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/industrial-02.fac     hard/industrial-04.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/hotel.fac             hard/hotel-1.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/hotel.fac             hard/hotel-2.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/hotel-01.fac          hard/hotel-1.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/hotel-02.fac          hard/hotel-2.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_0.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_1.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_2.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_3.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_4.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_5.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_green.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_0.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_1.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_2.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_3.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_4.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_5.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential-01.fac    hard/house_default_roof_flat_gray_0.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential-02.fac    hard/house_default_roof_flat_gray_1.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential-03.fac    hard/house_default_roof_flat_gray_2.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/residential-04.fac    hard/house_default_roof_flat_gray_3.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building-01.fac       hard/house_default_roof_flat_gray_4.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building-02.fac       hard/house_default_roof_flat_gray_5.fac\n",
-   "EXPORT_EXCLUDE  simheaven/facades/building-03.fac       hard/house_default_roof_flat_green.fac\n",
+char *LIBRARY[200] = {
+   "commercial.fac","commerce-01.fac",
+   "commercial.fac","commerce-02.fac",
+   "commercial.fac","commerce-03.fac",
+   "commercial.fac","commerce-04.fac",
+   "commercial.fac","commerce-05.fac",
+   "commercial.fac","commerce-06.fac",
+   "commercial.fac","commerce-07.fac",
+   "commercial.fac","commerce-08.fac",
+   "commercial-01.fac","commerce-03.fac",
+   "commercial-02.fac","commerce-04.fac",
+   "bld-high-res.fac","bld-high-res-01.fac",
+   "bld-high-res.fac","bld-high-res-02.fac",
+   "bld-high-res.fac","bld-high-res-03.fac",
+   "bld-high-res.fac","bld-high-res-04.fac",
+   "bld-high-res.fac","bld-high-res-05.fac",
+   "bld-high-com.fac","bld-high-com-01.fac",
+   "bld-high-com.fac","bld-high-com-02.fac",
+   "bld-high-res-01.fac","bld-high-res-02.fac",
+   "bld-high-res-02.fac","bld-high-res-05.fac",
+   "bld-high-com-01.fac","bld-high-com-01.fac",
+   "bld-high-com-02.fac","bld-high-com-03.fac",
+   "industrial.fac","industrial-01.fac",
+   "industrial.fac","industrial-02.fac",
+   "industrial.fac","industrial-03.fac",
+   "industrial.fac","industrial-04.fac",
+   "industrial.fac","industrial-05.fac",
+   "industrial.fac","industrial-06.fac",
+   "industrial.fac","industrial-07.fac",
+   "industrial.fac","industrial-08.fac",
+   "industrial-01.fac","industrial-01.fac",
+   "industrial-02.fac","industrial-04.fac",
+   "hotel.fac","hotel-1.fac",
+   "hotel.fac","hotel-2.fac",
+   "hotel-01.fac","hotel-1.fac",
+   "hotel-02.fac","hotel-2.fac",
+   "residential.fac","house_default_roof_flat_gray_0.fac",
+   "residential.fac","house_default_roof_flat_gray_1.fac",
+   "residential.fac","house_default_roof_flat_gray_2.fac",
+   "residential.fac","house_default_roof_flat_gray_3.fac",
+   "residential.fac","house_default_roof_flat_gray_4.fac",
+   "residential.fac","house_default_roof_flat_gray_5.fac",
+   "residential.fac","house_default_roof_flat_green.fac",
+   "building.fac","house_default_roof_flat_gray_0.fac",
+   "building.fac","house_default_roof_flat_gray_1.fac",
+   "building.fac","house_default_roof_flat_gray_2.fac",
+   "building.fac","house_default_roof_flat_gray_3.fac",
+   "building.fac","house_default_roof_flat_gray_4.fac",
+   "building.fac","house_default_roof_flat_gray_5.fac",
+   "residential-01.fac","house_default_roof_flat_gray_0.fac",
+   "residential-02.fac","house_default_roof_flat_gray_1.fac",
+   "residential-03.fac","house_default_roof_flat_gray_2.fac",
+   "residential-04.fac","house_default_roof_flat_gray_3.fac",
+   "building-01.fac","house_default_roof_flat_gray_4.fac",
+   "building-02.fac","house_default_roof_flat_gray_5.fac",
+   "building-03.fac","house_default_roof_flat_green.fac",
    NULL
 };
 
@@ -220,11 +220,13 @@ int isDir(char *s) {
 int genLibrary() {
    FILE *fp;
    int i;
+   char tmp[MAX_TXT];
 
    if ( (fp = fopen(XLIB,"w")) != NULL ) {
-      fputs("A\n800\nLIBRARY\n\n",fp);
-      for ( i=0 ; LIBRARY[i] != NULL ; i++ ) {
-         fputs(LIBRARY[i],fp);
+      fputs("A\n800\nLIBRARY\n\n# generated by Xroofs "VERSION"\n\n",fp);
+      for ( i=0 ; LIBRARY[i] != NULL ; i=i+2 ) {
+         sprintf(tmp,"EXPORT_EXCLUDE  simheaven/facades/%s   hard/%s\n",LIBRARY[i],LIBRARY[i+1]);
+         fputs(tmp,fp);
       }
       return(0);
    } else {
