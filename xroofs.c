@@ -5,7 +5,7 @@
 # compile: cl xroofs.c /D "NODEBUG" /O2
 */
 
-#define VERSION "0.1.1"
+#define VERSION "0.1.3"
 
 #ifdef _WIN32
  #include <windows.h>
@@ -39,27 +39,88 @@
 #define XROOFS          XROOFSDIR"/hard"
 #define XTEXTURES       XROOFSDIR"/textures"
 #define XTEXTURESROOF   XROOFSDIR"/textures_roof"
-#define XOBJECTS        XROOFSDIR"/facades"
+#define XFACADES        XROOFSDIR"/facades"
 #define XLIB            XROOFSDIR"/library.txt"
+#define DEFROOFS        "objects/facades"
 
 char *XSCENES[100] = {
-	"simHeaven_X-Europe-4-scenery",
-	"simHeaven_X-America-4-scenery",
-	"simHeaven_X-Europe-6-scenery",
-	"simHeaven_X-America-6-scenery",
-	"simHeaven_X-World_Europe-6-scenery",
-	"simHeaven_X-World_America-6-scenery",
-	NULL
+   "simHeaven_X-Europe-4-scenery",
+   "simHeaven_X-America-4-scenery",
+   "simHeaven_X-Europe-6-scenery",
+   "simHeaven_X-America-6-scenery",
+   "simHeaven_X-World_Europe-6-scenery",
+   "simHeaven_X-World_America-6-scenery",
+   NULL
 };
 
 char *FACADES[100] = {
-	"industrial",
-	"commerc",
-	"bld-high",
-	"hotel",
-	NULL
+   "industrial",
+   "commerc",
+   "bld-high",
+   "hotel",
+   "house_default_roof_flat",
+   NULL
 };
-	
+
+char *LIBRARY[100] = {
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-01.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-02.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-03.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-04.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-05.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-06.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-07.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-08.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial-01.fac     hard/commerce-03.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/commercial-02.fac     hard/commerce-04.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-01.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-02.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-03.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-04.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-05.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com.fac      hard/bld-high-com-01.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com.fac      hard/bld-high-com-02.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res-01.fac   hard/bld-high-res-02.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-res-02.fac   hard/bld-high-res-05.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com-01.fac   hard/bld-high-com-01.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/bld-high-com-02.fac   hard/bld-high-com-03.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-01.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-02.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-03.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-04.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-05.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-06.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-07.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-08.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial-01.fac     hard/industrial-01.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/industrial-02.fac     hard/industrial-04.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/hotel.fac             hard/hotel-1.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/hotel.fac             hard/hotel-2.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/hotel-01.fac          hard/hotel-1.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/hotel-02.fac          hard/hotel-2.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_0.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_1.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_2.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_3.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_4.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_gray_5.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential.fac       hard/house_default_roof_flat_green.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_0.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_1.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_2.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_3.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_4.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building.fac          hard/house_default_roof_flat_gray_5.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential-01.fac    hard/house_default_roof_flat_gray_0.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential-02.fac    hard/house_default_roof_flat_gray_1.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential-03.fac    hard/house_default_roof_flat_gray_2.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/residential-04.fac    hard/house_default_roof_flat_gray_3.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building-01.fac       hard/house_default_roof_flat_gray_4.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building-02.fac       hard/house_default_roof_flat_gray_5.fac\n",
+   "EXPORT_EXCLUDE  simheaven/facades/building-03.fac       hard/house_default_roof_flat_green.fac\n",
+   NULL
+};
+
 char XSCENE[MAX_TXT] = "";
 char XTEST[MAX_TXT] = "";
 char *words[MAX_WRD];
@@ -158,14 +219,17 @@ int isDir(char *s) {
 
 int genLibrary() {
    FILE *fp;
+   int i;
 
    if ( (fp = fopen(XLIB,"w")) != NULL ) {
-      fputs("A\n800\nLIBRARY\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-01.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-02.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-03.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-04.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-05.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-06.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-07.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial.fac        hard/commerce-08.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial-01.fac     hard/commerce-03.fac\nEXPORT_EXCLUDE  simheaven/facades/commercial-02.fac     hard/commerce-04.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-01.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-02.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-03.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-04.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res.fac      hard/bld-high-res-05.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-com.fac      hard/bld-high-com-01.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-com.fac      hard/bld-high-com-02.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res-01.fac   hard/bld-high-res-02.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-res-02.fac   hard/bld-high-res-05.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-com-01.fac   hard/bld-high-com-01.fac\nEXPORT_EXCLUDE  simheaven/facades/bld-high-com-02.fac   hard/bld-high-com-03.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-01.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-02.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-03.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-04.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-05.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-06.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-07.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial.fac        hard/industrial-08.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial-01.fac     hard/industrial-01.fac\nEXPORT_EXCLUDE  simheaven/facades/industrial-02.fac     hard/industrial-04.fac\nEXPORT_EXCLUDE  simheaven/facades/hotel.fac             hard/hotel-1.fac\nEXPORT_EXCLUDE  simheaven/facades/hotel.fac             hard/hotel-2.fac\nEXPORT_EXCLUDE  simheaven/facades/hotel-01.fac          hard/hotel-1.fac\nEXPORT_EXCLUDE  simheaven/facades/hotel-02.fac          hard/hotel-2.fac\n",fp);
-       return(0);
+      fputs("A\n800\nLIBRARY\n\n",fp);
+      for ( i=0 ; LIBRARY[i] != NULL ; i++ ) {
+         fputs(LIBRARY[i],fp);
+      }
+      return(0);
    } else {
-       return(-1);
+      return(-1);
    }
-
 }
 
 /*-----------------------------------------------------------------*/
@@ -189,7 +253,7 @@ int genFacFile(char *s) {
                //printf("comment\n");
             } else {               
                if ( strstr(buf,"LOD 0") ) {
-                  sprintf(buf,"LOD 0 8000\nHARD_ROOF concrete\n");
+                  sprintf(buf,"LOD 0 9000\nHARD_ROOF concrete\n");
                } else {
                   if ( strstr(buf,"TEXTURE") ) {
                      if ( ! strstr(buf,"../textures") ) {
@@ -230,14 +294,14 @@ int genFacFiles() {
    int match,i;
 
    sprintf(tmp,"%s/%s/facades",XSCENERYDIR,XSCENE);
-   //printf("opening %s\n",tmp);
+   //printf("opening dir %s\n",tmp);
 
    d = opendir(tmp);
    if (d) {
       while ((dir = readdir(d)) != NULL) {
          if( strstr(dir->d_name,".fac") ) {
 
-            // printf("testing %s \n", dir->d_name);
+            // printf("testing file %s \n", dir->d_name);
             match = 0; 
 
             // see if FAC file needs to be changed
@@ -278,6 +342,7 @@ int main(int argc, char **argv) {
       }
    }
 
+   // do we have a SimHeaven package installed ?
    if ( strlen(XSCENE) > 0 ) {
       hasXE = 1;
       strcat(XSCENE,"/objects");
@@ -285,8 +350,6 @@ int main(int argc, char **argv) {
       printf("info: no supported SimHeaven scenery found\n");
       exit(-1);
    }
-
-   
  
 #ifndef _WIN32
    strcpy(tmp,dirname(argv[0]));
@@ -294,6 +357,7 @@ int main(int argc, char **argv) {
    chdir(tmp);
 #endif
 
+   // create "Xroofs" folder
    if ( ! isDir(XROOFSDIR) ) {
       if ( mkdir(XROOFSDIR,0755) ) {
          printf("ERROR: cannot create %s\n",XROOFSDIR);
@@ -303,12 +367,14 @@ int main(int argc, char **argv) {
       }
    }
 
+   // create "hard" folder
    if ( ! isDir(XROOFS) ) {
       mkdir(XROOFS,0755);
    } else {
       printf("%s already exists\n",XROOFS);
    }
 
+   // create "textures" link
    if ( ! isFile(XTEXTURES"/house1.dds") ) {
 #ifdef _WIN32
       sprintf(tmp,"mklink /j \"%s\" \"%s/%s/textures\"",XTEXTURES,XSCENERYDIR,XSCENE);
@@ -322,6 +388,7 @@ int main(int argc, char **argv) {
       printf("%s already exists\n",XTEXTURES);
    }
 
+   // create "textures_roof" link
    if ( ! isFile(XTEXTURESROOF"/roof.dds") ) {
 #ifdef _WIN32
       sprintf(tmp,"mklink /j \"%s\" \"%s/%s/textures_roof\"",XTEXTURESROOF,XSCENERYDIR,XSCENE);
@@ -335,18 +402,18 @@ int main(int argc, char **argv) {
       printf("%s already exists\n",XTEXTURESROOF);
    }
 
-
-   if ( ! isFile(XOBJECTS"/ikea.fac") ) {
+   // create "facades" link
+   if ( ! isFile(XFACADES"/ikea.fac") ) {
 #ifdef _WIN32
-      sprintf(tmp,"mklink /j \"%s\" \"%s/%s/facades\"",XOBJECTS,XSCENERYDIR,XSCENE);
+      sprintf(tmp,"mklink /j \"%s\" \"%s/%s/facades\"",XFACADES,XSCENERYDIR,XSCENE);
       //printf("%s\n",tmp); 
       system(tmp);
 #else
       sprintf(tmp,"../%s/facades",XSCENE);
-      symlink(tmp,XOBJECTS);
+      symlink(tmp,XFACADES);
 #endif
    } else {
-      printf("%s already exists\n",XOBJECTS);
+      printf("%s already exists\n",XFACADES);
    }
 
    genFacFiles();
