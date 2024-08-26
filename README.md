@@ -48,7 +48,7 @@ macOS or Linux:
 
 # Versions
 
-0.1.3  added more buildings, changed LOD to 9000 , code cleanup
-0.1.2  internal
-0.1.1  minor fixes 
-0.1.0  inital version
+	0.1.3  added more buildings, changed LOD to 9000 , code cleanup
+	0.1.2  internal
+	0.1.1  minor fixes 
+	0.1.0  inital version
